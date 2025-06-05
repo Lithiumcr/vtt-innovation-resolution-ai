@@ -11,6 +11,9 @@ __pycache__/
 !.gitignore
 !.streamlit/
 
+*.md
+!README.md
+
 ai/
 config/
 qdrant_data/
