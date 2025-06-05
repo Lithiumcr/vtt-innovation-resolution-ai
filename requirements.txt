@@ -26,6 +26,9 @@ langchain_community
 langchain-openai
 openai
 
+# vector store
+qdrant-client
+
 # Development tools
 jupyter
 notebook
