@@ -8,6 +8,8 @@ import streamlit as st
 from streamlit.components.v1 import html
 import warnings
 
+from pathlib import Path
+
 # 抑制所有警告
 warnings.filterwarnings("ignore")
 
@@ -30,12 +32,12 @@ except Exception as e:
 
 # 创建数据目录和密钥目录（如果不存在）
 data_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), "data")
-keys_dir = os.path.join(data_dir, "keys")
+keys_dir = Path(__file__).resolve().parent / "config"
 os.makedirs(keys_dir, exist_ok=True)
 
 
 
-from innovation_resolution import chat_bot
+from azure_openai import chat_bot
 
 # ----------------------------
 # Page Config & Title

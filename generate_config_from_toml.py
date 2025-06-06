@@ -2,8 +2,11 @@ import toml
 import json
 import os
 
+from pathlib import Path
+
 TOML_PATH = ".streamlit/secrets.toml"
-UNIFIED_CONFIG_PATH = "data/keys/azure_config.json"
+UNIFIED_CONFIG_PATH = CONFIG_PATH = Path(__file__).resolve().parent / "config" / "config.json"
+
 
 if not os.path.exists(TOML_PATH):
     raise FileNotFoundError(f"❌ Could not find {TOML_PATH}")

@@ -57,7 +57,7 @@ class VectorStore:
             ids = ids,
             vectors = embeddings,
             payload = payload,
-            parallel = 1
+            parallel = 3
         )
     
     def remove(self, texts: List[str]):
