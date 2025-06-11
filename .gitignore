@@ -16,7 +16,7 @@ __pycache__/
 
 ai/
 config/
-qdrant_data/
+# qdrant_data/
 
 
 
