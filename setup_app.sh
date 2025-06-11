@@ -12,7 +12,7 @@ done
 
 echo "✅ Qdrant is up, starting the application..."
 
-python3 ./innovation_resolution.py
+# python3 ./innovation_resolution.py
 
 streamlit run app.py --server.port=8501 --server.address=0.0.0.0
 
