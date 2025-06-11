@@ -1,0 +1,13 @@
+FROM qdrant/qdrant:latest
+
+# 将初始化数据打包进镜像（临时目录，避免初始化数据被 volumn 操作覆盖）
+COPY ./qdrant_data /qdrant_data_tmp
+
+# 将初始化数据复制进 /qdrant/storage (volumn 对应的文件夹)
+CMD ["sh", "-c", "\
+  echo '⏳ Copying init data (skipping existing files)...'; \
+  cp -rn /qdrant_data_tmp/* /qdrant/storage/ && \
+  rm -rf /qdrant_data_tmp; \
+  echo '✅ Launching Qdrant...'; \
+  ./qdrant \
+"]

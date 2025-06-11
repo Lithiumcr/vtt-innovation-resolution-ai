@@ -1,3 +1,7 @@
+## Branch Description
+
+This is the `fly.io` deployment version. You have to set up the 2 containers separately and set envirment variables `AZURE_OPENAI_API_KEY` and `AZURE_OPENAI_ENDPOINT` via `fly secret`.
+
 ### ✨ About this Fork
 This is a personal continuation of the AaltoAI Hackathon 2025 project. Originally based on the AaltoAI Hackathon project (2025). This version continues development with a focus on Azure OpenAI integration and web interface.
 

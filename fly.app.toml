@@ -1,0 +1,31 @@
+# fly.streamlit.toml
+app = "app-wantsomechips"
+primary_region = "fra"
+
+[build]
+dockerfile = "dockerfile-app"
+
+[env]
+AZURE_OPENAI_API_VERSION ="2024-10-21"
+AZURE_OPENAI_CHAT_DEPLOYMENT_gpt_4_1 ="gpt-4.1"
+AZURE_OPENAI_CHAT_DEPLOYMENT_gpt_4o_mini ="gpt-4o-mini"
+AZURE_OPENAI_EMBEDDING_DEPLOYMENT_LARGE ="text-embedding-3-large"
+AZURE_OPENAI_EMBEDDING_DEPLOYMENT_SMALL ="text-embedding-3-small"
+AZURE_SEARCH_ENDPOINT = ""
+AZURE_SEARCH_KEY = ""
+AZURE_SEARCH_INDEX_NAME = ""
+DOCKER_QDRANT_URL ="http://qdrant-server-wantsomechips.internal:6333"
+
+[[services]]
+internal_port = 8501
+protocol = "tcp"
+
+  [[services.ports]]
+  port = 80
+  handlers = ["http"]
+
+  [[services.ports]]
+  port = 443
+  handlers = ["tls", "http"]
+
+

@@ -32,7 +32,12 @@ class VectorStore:
         self.collection_name = collection_name
 
         url= os.getenv("DOCKER_QDRANT_URL", "http://localhost:6333")
-        self.qdrant = QdrantClient(url = url)
+
+        try:
+            self.qdrant = QdrantClient(url = url)
+        except Exception as e:
+            logger.error(f"Failed to connect Qdrant: {e}")
+            
 
         self.init_collection()
         self.init_sparse_vectorizer()
