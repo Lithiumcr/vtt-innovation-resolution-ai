@@ -9,7 +9,7 @@ __pycache__/
 
 .*
 !.gitignore
-!.streamlit/
+!.dockerignore
 
 *.md
 !README.md

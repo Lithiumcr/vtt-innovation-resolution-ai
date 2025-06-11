@@ -14,30 +14,17 @@ import json
 import pandas as pd
 import numpy as np
 from typing import List, Dict, Tuple, Set, Any, Optional, Union, Protocol
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import seaborn as sns
 import networkx as nx
-from sklearn.feature_extraction.text import TfidfVectorizer
+# from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-import plotly.graph_objects as go
-import plotly.express as px
+# import plotly.graph_objects as go
+# import plotly.express as px
 from tqdm import tqdm
 from vis import visualize_network_tufte
 
-from langchain_openai import AzureChatOpenAI
-from langchain_openai import AzureOpenAIEmbeddings
-
-from langchain_openai import AzureChatOpenAI
-from langchain_openai import AzureOpenAIEmbeddings
-
-from langchain_community.vectorstores.azuresearch import AzureSearch
-
-from langchain_core.documents import Document
-
-from langchain_core.prompts import PromptTemplate
-
-from azure_openai import get_openai_models, chat_bot, \
-                            CONFIG_PATH, DEFAULT_DIMS
+from azure_openai import get_openai_models, chat_bot, DEFAULT_DIMS
 
 from qdrant import VectorStore
 
@@ -998,7 +985,7 @@ def resolve_innovation_duplicates(
         innovation_texts = [innovation_features[iid] for iid in innovation_ids]
         embeddings_input = [embeddings[iid] for iid in innovation_ids]
 
-        vector_store.load_cache(embeddings_input, innovation_texts)
+        vector_store.load(innovation_texts, embeddings_input)
 
         print("Saved embeddings to local vectore store...")
 
@@ -1404,15 +1391,15 @@ def main():
 
     
     # Step 3: Resolve innovation duplicates
-    canonical_mapping = resolve_innovation_duplicates(
-        df_relationships=df_relationships,
-        model=embed_model,
-        cache_config=cache_config,
-        method="hdbscan",  # 默认使用hdbscan
-        min_cluster_size=2,  # 可配置参数
-        metric="cosine",
-        cluster_selection_method="eom"
-    )
+    # canonical_mapping = resolve_innovation_duplicates(
+    #     df_relationships=df_relationships,
+    #     model=embed_model,
+    #     cache_config=cache_config,
+    #     method="hdbscan",  # 默认使用hdbscan
+    #     min_cluster_size=2,  # 可配置参数
+    #     metric="cosine",
+    #     cluster_selection_method="eom"
+    # )
         
     # Step 4: Create consolidated knowledge graph
     consolidated_graph = create_innovation_knowledge_graph(df_relationships, canonical_mapping)
